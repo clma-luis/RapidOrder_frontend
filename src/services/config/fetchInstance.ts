@@ -23,15 +23,14 @@ const fetchInstance: FetchInstance = async (props: FetchInstanceProps) => {
   try {
     const response = await fetch(`${BASE_URL_API}${url}`, {
       ...options,
-
       signal: controllerInstanceAuth.signal,
       headers: { ...instanceAuthHeaders(), ...headers },
       body: JSON.stringify(body),
     });
 
-    if (!response.ok) {
+    /*     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    } */
 
     return await response.json();
   } catch (error: any) {
@@ -44,7 +43,7 @@ export { fetchInstance };
 
 export interface FetchInstanceProps {
   url: string;
-  body: any;
+  body?: any;
   headers?: HeadersInit | undefined;
   options?: any | {};
 }

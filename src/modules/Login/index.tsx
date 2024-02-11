@@ -30,7 +30,7 @@ const LoginModule = ({ className, ...props }: CardProps) => {
           </div>
           <div className="h-[72px]">
             <CardDescription className="mb-2">Contraseña</CardDescription>
-            <Input name="password" type="password" placeholder="Ingresa tu contraseña" />
+            <Input name="password" type="password" placeholder="Ingresa tu contraseña"  />
           </div>
         </CardContent>
         <CardFooter>
