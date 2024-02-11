@@ -1,5 +1,6 @@
 "use client";
-import { getAllUsers } from "@/services/user";
+
+import { getAllUsersService } from "@/services/user";
 import { Socket } from "dgram";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -62,7 +63,7 @@ export default function Home() {
     /*     socket.emit('join-room', {userId: "65b2ea013b3ef466fe6453a1"});
      */
     console.log("pasa por aqui handle btn");
-    await getAllUsers();
+    await getAllUsersService();
 
     /*  socket.emit("create-order", data, (callback: any) => {
       console.log("del server al client", callback);

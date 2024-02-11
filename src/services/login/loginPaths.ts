@@ -1,3 +1,3 @@
 export const LOGIN_PATHS_SERVICE = {
-  LOGIN: "/login",
+  LOGIN_PATH: "/auth/login",
 };

@@ -8,8 +8,9 @@ export const connection = (instanceFetch: FetchInstance = fetchInstance) => {
       return response;
     },
 
-    post: async (url: string, data: any, options = {}) => {
-      const response = await instanceFetch(url, { ...options, method: "POST", body: JSON.stringify(data) });
+    post: async (url: string, body: any, options = {}) => {
+      console.log("data", body);
+      const response = await instanceFetch(url, body, { ...options, method: "POST" });
 
       return response;
     },

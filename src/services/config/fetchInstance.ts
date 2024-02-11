@@ -2,6 +2,7 @@ import { BASE_URL_API } from "@/shared/config";
 import { TOKEN } from "@/shared/constants/defaultConsts";
 
 import { getLocalStorage } from "@/shared/utils/localStorageUtils";
+import { HEADERS_APPLICATION_JSON } from "./const";
 
 const controllerInstanceAuth = new AbortController();
 
@@ -16,22 +17,21 @@ export const instanceAuthHeaders = () => {
   return headers;
 };
 
-export type FetchInstance = (url: string, options?: {}) => Promise<any>;
+const fetchInstance: FetchInstance = async (props: FetchInstanceProps) => {
+  const { url, body, headers = HEADERS_APPLICATION_JSON, options } = props;
 
-const fetchInstance: FetchInstance = async (url: string, options = {}) => {
-  console.log("pasa por el fetch");
   try {
     const response = await fetch(`${BASE_URL_API}${url}`, {
       ...options,
+
       signal: controllerInstanceAuth.signal,
-      headers: instanceAuthHeaders(),
+      headers: { ...instanceAuthHeaders(), ...headers },
+      body: JSON.stringify(body),
     });
 
-    // Puedes agregar lógica adicional según tus necesidades, como verificar códigos de estado, manejar errores, etc.
-
-    /*  if (!response.ok) {
+    if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
-    } */
+    }
 
     return await response.json();
   } catch (error: any) {
@@ -41,3 +41,12 @@ const fetchInstance: FetchInstance = async (url: string, options = {}) => {
 };
 
 export { fetchInstance };
+
+export interface FetchInstanceProps {
+  url: string;
+  body: any;
+  headers?: HeadersInit | undefined;
+  options?: any | {};
+}
+
+export type FetchInstance = (props: FetchInstanceProps) => Promise<any>;

@@ -1,9 +1,9 @@
 export const USER_PATHS_SERVICE = {
-  CREATE: "/user/create",
-  GET_USERS: "/user/getUsers",
-  GET_USER: "/user/getUser/:id",
-  UPDATE_USER: "/user/updateUser",
-  REMOVE_USER: "/user/removeUser/:id",
-  CHANGE_PASSWORD: "/user/changePassword",
-  CHANGE_EMAIL: "/user/changeEmail",
+  CREATE_PATH: "/user/create",
+  GET_USERS_PATH: "/user/getUsers",
+  GET_USER_PATH: "/user/getUser/:id",
+  UPDATE_USER_PATH: "/user/updateUser",
+  REMOVE_USER_PATH: "/user/removeUser/:id",
+  CHANGE_PASSWORD_PATH: "/user/changePassword",
+  CHANGE_EMAIL_PATH: "/user/changeEmail",
 };
