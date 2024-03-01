@@ -6,6 +6,7 @@ Rapid Order is a frontend application designed to streamline the process of plac
 
 ## Estructura de Carpetas
 
+```plaintext
 Frontend project
 │
 ├── src
