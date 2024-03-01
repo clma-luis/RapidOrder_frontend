@@ -29,7 +29,7 @@ Frontend project
 ├── package.json
 ├── tsconfig.json
 └── ...
-```plaintext
+```
 
 ## Instalación y Ejecución en Contenedor
 
@@ -41,18 +41,22 @@ Frontend project
 
 2. **Navega al Directorio del Proyecto:**
 
+    ```bash
     cd rapid-order-frontend
 
 3. **Copia el Archivo de Entorno:**
 
+    ```bash
     cp .env.example .env
 
 4. **Instala las Dependencias:**
 
+    ```bash
     docker-compose -f docker-compose-dev.yml up --build
 
 5. **Ejecutar Pruebas:**
 
+    ```bash
     docker-compose -f docker-compose-dev.yml run nextjs-app npm run test
 
 
