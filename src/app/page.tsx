@@ -1,8 +1,9 @@
 "use client";
 
-import { getAllUsersService } from "@/services/user";
+import { Button } from "@/components/ui/button";
+/* import { getAllUsersService } from "@/services/user";
 import { Socket } from "dgram";
-import Image from "next/image";
+import Image from "next/image"; */
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
@@ -63,7 +64,7 @@ export default function Home() {
     /*     socket.emit('join-room', {userId: "65b2ea013b3ef466fe6453a1"});
      */
     console.log("pasa por aqui handle btn");
-    await getAllUsersService();
+/*     await getAllUsersService(); */
 
     /*  socket.emit("create-order", data, (callback: any) => {
       console.log("del server al client", callback);
@@ -74,7 +75,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
        <h1>Hola mundo</h1>
-        <button onClick={handleBtn}>Conectar</button>
+        <Button onClick={handleBtn}>Conectar</Button>
       </div>
     </main>
   );
