@@ -58,10 +58,3 @@ Frontend project
 
     ```bash
     docker-compose -f docker-compose-dev.yml run nextjs-app npm run test
-
-
-
-
-
-
-
