@@ -29,6 +29,7 @@ Frontend project
 ├── package.json
 ├── tsconfig.json
 └── ...
+```plaintext
 
 ## Instalación y Ejecución en Contenedor
 
