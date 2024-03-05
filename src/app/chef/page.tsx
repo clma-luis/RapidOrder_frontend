@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import React, { useEffect } from "react";
 import { io } from "socket.io-client";
 
