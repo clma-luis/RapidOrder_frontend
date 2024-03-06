@@ -41,8 +41,8 @@ export default function DashboardM() {
         />
       </div>
       <div className="hidden flex-col md:flex ">
-        <div className="border-b">
-          <div className="flex h-16 items-center px-4">
+        <div className="border-b ">
+          <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 ">
             <TeamSwitcher />
             <MainNav className="mx-6" />
             <div className="ml-auto flex items-center space-x-4">
@@ -51,16 +51,19 @@ export default function DashboardM() {
             </div>
           </div>
         </div>
+
         <div className="flex-1 space-y-4 p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
+          <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 ">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
               <Button>Download</Button>
             </div>
           </div>
-          <Tabs defaultValue="overview" className="space-y-4">
-            <TabsList>
+
+          <Tabs defaultValue="overview" className="space-y-4 ">
+            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="analytics" disabled>
                 Analytics
@@ -72,8 +75,13 @@ export default function DashboardM() {
                 Notifications
               </TabsTrigger>
             </TabsList>
+            </div>
+          {/* max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 */}
             <TabsContent value="overview" className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div>
+                
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-w-screen-2xl justify-center">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
