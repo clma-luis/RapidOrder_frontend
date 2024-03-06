@@ -1,59 +1,35 @@
-import { Metadata } from "next"
-import Image from "next/image"
+import { Metadata } from "next";
+import Image from "next/image";
 
-
-
-
-
-import { Button } from "@/components/ui/Button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
-import { CalendarDateRangePicker } from "./components/date-range-picker"
-import { MainNav } from "./components/main-nav"
-import { Overview } from "./components/overview"
-import { RecentSales } from "./components/recent-sales"
-import { Search } from "./components/search"
-import TeamSwitcher from "./components/team-switcher"
-import { UserNav } from "./components/user-nav"
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import { CalendarDateRangePicker } from "./components/date-range-picker";
+import { MainNav } from "./components/main-nav";
+import { Overview } from "./components/overview";
+import { RecentSales } from "./components/recent-sales";
+import { Search } from "./components/search";
+import TeamSwitcher from "./components/team-switcher";
+import { UserNav } from "./components/user-nav";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Example dashboard app built using the components.",
-}
+};
 
 export default function DashboardM() {
   return (
     <>
       <div className="md:hidden">
-        <Image
-          src="/examples/dashboard-light.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/dashboard-dark.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="hidden dark:block"
-        />
+        <Image src="/examples/dashboard-light.png" width={1280} height={866} alt="Dashboard" className="block dark:hidden" />
+        <Image src="/examples/dashboard-dark.png" width={1280} height={866} alt="Dashboard" className="hidden dark:block" />
       </div>
       <div className="hidden flex-col md:flex ">
-        <div className="border-b ">
-          <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 ">
-            <TeamSwitcher />
-            <MainNav className="mx-6" />
-            <div className="ml-auto flex items-center space-x-4">
-              <Search />
-              <UserNav />
-            </div>
-          </div>
-        </div>
+        <Navbar/>
 
         <div className="flex-1 space-y-4 p-8 pt-6">
-          <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 ">
+          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
@@ -62,31 +38,26 @@ export default function DashboardM() {
           </div>
 
           <Tabs defaultValue="overview" className="space-y-4 ">
-            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics" disabled>
-                Analytics
-              </TabsTrigger>
-              <TabsTrigger value="reports" disabled>
-                Reports
-              </TabsTrigger>
-              <TabsTrigger value="notifications" disabled>
-                Notifications
-              </TabsTrigger>
-            </TabsList>
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
+              <TabsList>
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="analytics" disabled>
+                  Analytics
+                </TabsTrigger>
+                <TabsTrigger value="reports" disabled>
+                  Reports
+                </TabsTrigger>
+                <TabsTrigger value="notifications" disabled>
+                  Notifications
+                </TabsTrigger>
+              </TabsList>
             </div>
-          {/* max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 */}
+            {/* max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4 */}
             <TabsContent value="overview" className="space-y-4">
-              <div>
-                
-              </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-w-screen-2xl justify-center">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-w-screen-xl mx-auto my-auto">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Total Revenue
-                    </CardTitle>
+                    <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -102,16 +73,12 @@ export default function DashboardM() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">$45,231.89</div>
-                    <p className="text-xs text-muted-foreground">
-                      +20.1% from last month
-                    </p>
+                    <p className="text-xs text-muted-foreground">+20.1% from last month</p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Subscriptions
-                    </CardTitle>
+                    <CardTitle className="text-sm font-medium">Subscriptions</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -129,9 +96,7 @@ export default function DashboardM() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">+2350</div>
-                    <p className="text-xs text-muted-foreground">
-                      +180.1% from last month
-                    </p>
+                    <p className="text-xs text-muted-foreground">+180.1% from last month</p>
                   </CardContent>
                 </Card>
                 <Card>
@@ -153,16 +118,12 @@ export default function DashboardM() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">+12,234</div>
-                    <p className="text-xs text-muted-foreground">
-                      +19% from last month
-                    </p>
+                    <p className="text-xs text-muted-foreground">+19% from last month</p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Active Now
-                    </CardTitle>
+                    <CardTitle className="text-sm font-medium">Active Now</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -178,13 +139,11 @@ export default function DashboardM() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">+573</div>
-                    <p className="text-xs text-muted-foreground">
-                      +201 since last hour
-                    </p>
+                    <p className="text-xs text-muted-foreground">+201 since last hour</p>
                   </CardContent>
                 </Card>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7 max-w-screen-xl mx-auto my-auto">
                 <Card className="col-span-4">
                   <CardHeader>
                     <CardTitle>Overview</CardTitle>
@@ -196,9 +155,7 @@ export default function DashboardM() {
                 <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Recent Sales</CardTitle>
-                    <CardDescription>
-                      You made 265 sales this month.
-                    </CardDescription>
+                    <CardDescription>You made 265 sales this month.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <RecentSales />
@@ -210,5 +167,5 @@ export default function DashboardM() {
         </div>
       </div>
     </>
-  )
+  );
 }

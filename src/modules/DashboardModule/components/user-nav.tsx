@@ -1,3 +1,4 @@
+"use client"
 import {
   Avatar,
   AvatarFallback,
@@ -14,8 +15,11 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/DropdowMenu"
+import { useRouter } from "next/navigation"
+
 
 export function UserNav() {
+  const router = useRouter()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -45,7 +49,7 @@ export function UserNav() {
             Billing
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push("/settings")}>
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
