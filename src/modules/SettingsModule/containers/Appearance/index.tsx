@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/Separator"
-import { AppearanceForm } from "./appearance-form"
+import { AppearanceForm } from "./AppearanceForm"
 
 
-export default function SettingsAppearancePage() {
+export default function SettingsAppearanceContainer() {
   return (
     <div className="space-y-6">
       <div>

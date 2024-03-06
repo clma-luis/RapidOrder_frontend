@@ -1,19 +1,35 @@
+"use client";
+import { useParams } from "next/navigation";
+import SettingsLayout from "./Layout";
+import SettingsAccountContainer from "./containers/Account";
+import SettingsAppearanceContainer from "./containers/Appearance";
+import SettingsDisplayContainer from "./containers/Display";
+import SettingsNotificationsContainer from "./containers/Notifications";
+import SettingsProfileContainer from "./containers/Profile";
+import { settingsPathsRoutes } from "./shared/constants/pathsRoutes";
 
-import { Separator } from "@/components/ui/Separator"
-import { ProfileForm } from "./profile-form"
+const { ACCOUNT_ROUTE, APPEREANCE_ROUTE, NOTIFICATIONS_ROUTE, PROFILE_ROUTE, DISPLAY_ROUTE } = settingsPathsRoutes;
 
+const componentToRender: Record<string, (props: any) => JSX.Element> = {
+  [PROFILE_ROUTE]: SettingsProfileContainer,
+  [ACCOUNT_ROUTE]: SettingsAccountContainer,
+  [APPEREANCE_ROUTE]: SettingsAppearanceContainer,
+  [NOTIFICATIONS_ROUTE]: SettingsNotificationsContainer,
+  [DISPLAY_ROUTE]: SettingsDisplayContainer,
+};
 
-export default function SettingsModule() {
+const SettingsModule = () => {
+  const { section } = useParams();
+
+  const Component = componentToRender[section as string];
+
+  if (!Component) return <></>;
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h3 className="text-lg font-medium">Profile</h3>
-        <p className="text-sm text-muted-foreground">
-          This is how others will see you on the site.
-        </p>
-      </div>
-      <Separator />
-      <ProfileForm />
-    </div>
-  )
-}
+    <SettingsLayout>
+      <Component />
+    </SettingsLayout>
+  );
+};
+
+export default SettingsModule;

@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/Separator"
-import { AccountForm } from "./account-form"
+import { AccountForm } from "./AccountForm"
 
 
-export default function SettingsAccountPage() {
+export default function SettingsAccountContainer() {
   return (
     <div className="space-y-6">
       <div>

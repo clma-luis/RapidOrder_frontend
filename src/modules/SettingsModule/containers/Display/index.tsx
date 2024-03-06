@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/Separator"
-import { DisplayForm } from "./display-form"
+import { DisplayForm } from "./DisplayForm"
 
-export default function SettingsDisplayPage() {
+export default function SettingsDisplayContainer() {
   return (
     <div className="space-y-6">
       <div>
