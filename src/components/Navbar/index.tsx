@@ -1,7 +1,6 @@
-import { MainNav } from "@/modules/DashboardModule/components/main-nav";
-import { Search } from "@/modules/DashboardModule/components/search";
+import { MainNav } from "@/components/Navbar/components/MainNav";
+import { UserNav } from "@/components/UserNav";
 import TeamSwitcher from "@/modules/DashboardModule/components/team-switcher";
-import { UserNav } from "@/modules/DashboardModule/components/user-nav";
 
 const Navbar = () => {
   return (
@@ -10,7 +9,6 @@ const Navbar = () => {
         <TeamSwitcher />
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-4">
-          <Search />
           <UserNav />
         </div>
       </div>

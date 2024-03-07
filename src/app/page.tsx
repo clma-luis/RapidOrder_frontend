@@ -60,17 +60,7 @@ export default function Home() {
       socket.off("foo", onFooEvent);
     };
   }, []);
-  const handleBtn = async () => {
-    /*     socket.emit('join-room', {userId: "65b2ea013b3ef466fe6453a1"});
-     */
-    console.log("pasa por aqui handle btn");
-    /*     await getAllUsersService(); */
-
-    /*  socket.emit("create-order", data, (callback: any) => {
-      console.log("del server al client", callback);
-    }); */
-  };
-
+  
   return (
     <main className="bg-background dark:bg-background">
       <DashboardModule />

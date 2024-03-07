@@ -1,17 +1,12 @@
 import { Metadata } from "next";
-import Image from "next/image";
 
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
-import { MainNav } from "./components/main-nav";
 import { Overview } from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
-import { Search } from "./components/search";
-import TeamSwitcher from "./components/team-switcher";
-import { UserNav } from "./components/user-nav";
-import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -21,16 +16,12 @@ export const metadata: Metadata = {
 export default function DashboardM() {
   return (
     <>
-      <div className="md:hidden">
-        <Image src="/examples/dashboard-light.png" width={1280} height={866} alt="Dashboard" className="block dark:hidden" />
-        <Image src="/examples/dashboard-dark.png" width={1280} height={866} alt="Dashboard" className="hidden dark:block" />
-      </div>
       <div className="hidden flex-col md:flex ">
         <Navbar/>
 
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Órdenes</h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
               <Button>Download</Button>
@@ -40,15 +31,12 @@ export default function DashboardM() {
           <Tabs defaultValue="overview" className="space-y-4 ">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
               <TabsList>
-                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="overview">Crear</TabsTrigger>
                 <TabsTrigger value="analytics" disabled>
-                  Analytics
+                  Abiertas
                 </TabsTrigger>
                 <TabsTrigger value="reports" disabled>
-                  Reports
-                </TabsTrigger>
-                <TabsTrigger value="notifications" disabled>
-                  Notifications
+                  Cerradas
                 </TabsTrigger>
               </TabsList>
             </div>
