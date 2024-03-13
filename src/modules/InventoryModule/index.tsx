@@ -1,8 +1,8 @@
-import React from 'react'
 
 const InventoryModule = () => {
   return (
-    <div>InventoryModule</div>
+    <div>
+      InventoryModule</div>
   )
 }
 

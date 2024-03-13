@@ -1,8 +1,11 @@
+import OrdersModule from "@/modules/OrdersMudule"
 import React from 'react'
 
 const OrdersPage = () => {
   return (
-    <div>OrdersPage</div>
+    <main className="bg-background dark:bg-background">
+      <OrdersModule/>
+    </main>
   )
 }
 

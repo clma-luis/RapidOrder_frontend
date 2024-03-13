@@ -1,6 +1,7 @@
 "use client";
 
-import DashboardModule from "@/modules/DashboardModule";
+
+import PrincipalModule from "@/modules/PrincipalModule";
 /* import { getAllUsersService } from "@/services/user";
 import { Socket } from "dgram";
 import Image from "next/image"; */
@@ -63,7 +64,7 @@ export default function Home() {
   
   return (
     <main className="bg-background dark:bg-background">
-      <DashboardModule />
+      <PrincipalModule />
     </main>
   );
 }

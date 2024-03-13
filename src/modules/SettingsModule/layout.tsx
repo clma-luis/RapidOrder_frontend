@@ -1,7 +1,6 @@
 import { Separator } from "@/components/ui/Separator";
 import { SidebarNav } from "./components/SidebarNav";
 import { settingsPathsRoutes } from "./shared/constants/pathsRoutes";
-import Navbar from "@/components/Navbar";
 
 const { ACCOUNT_ROUTE, APPEREANCE_ROUTE, NOTIFICATIONS_ROUTE, PROFILE_ROUTE, DISPLAY_ROUTE } = settingsPathsRoutes;
 
@@ -40,7 +39,6 @@ interface SettingsLayoutProps {
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
-    <Navbar/>
       <div className="hidden space-y-6 p-10 pb-16 md:block max-w-screen-xl mx-auto rounded-lg border my-16">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Settings</h2>

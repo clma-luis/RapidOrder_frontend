@@ -1,23 +1,17 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { ChevronDownIcon } from "@radix-ui/react-icons"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/Button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/Form"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup"
-import { toast } from "@/components/ui/Toast/use-toast"
+import { cn } from "@/lib/utils";
+import { Button, buttonVariants } from "@/components/ui/Button";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/Form";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup";
+import { toast } from "@/components/ui/Toast/use-toast";
+import { useTheme } from "next-themes";
+import React, { useState } from "react";
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
@@ -27,79 +21,66 @@ const appearanceFormSchema = z.object({
     invalid_type_error: "Select a font",
     required_error: "Please select a font.",
   }),
-})
+});
 
-type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
+type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
-// This can come from your database or API.
-const defaultValues: Partial<AppearanceFormValues> = {
-  theme: "light",
+enum ModeType {
+  LIGHT = "light",
+  DARK = "dark",
 }
 
 export function AppearanceForm() {
+  const { setTheme } = useTheme();
+  const [typeMode, setTypeMode] = useState(ModeType.DARK);
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
-    defaultValues,
-  })
+    defaultValues: {
+      theme: typeMode,
+    },
+  });
 
-  function onSubmit(data: AppearanceFormValues) {
+  React.useEffect(() => {
+    const storageTypeMode = localStorage.getItem("typeMode");
+    if (storageTypeMode && storageTypeMode !== typeMode) setTypeMode(JSON.parse(storageTypeMode));
+  }, []);
+
+  React.useEffect(() => {
+    if (!!typeMode) {
+      setTheme(typeMode);
+    }
+  }, [typeMode]);
+
+
+  const handleRadioGroup = () => {
+    setTypeMode((prev) => (prev === ModeType.LIGHT ? ModeType.DARK : ModeType.LIGHT));
+  };
+
+  const handleSubmit = () => {
+    localStorage.setItem("typeMode", JSON.stringify(typeMode));
+
     toast({
       title: "You submitted the following values:",
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          <code className="text-white">asdf</code>
         </pre>
       ),
-    })
-  }
+    });
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="font"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Font</FormLabel>
-              <div className="relative w-max">
-                <FormControl>
-                  <select
-                    className={cn(
-                      buttonVariants({ variant: "outline" }),
-                      "w-[200px] appearance-none font-normal"
-                    )}
-                    {...field}
-                  >
-                    <option value="inter">Inter</option>
-                    <option value="manrope">Manrope</option>
-                    <option value="system">System</option>
-                  </select>
-                </FormControl>
-                <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
-              </div>
-              <FormDescription>
-                Set the font you want to use in the dashboard.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={handleSubmit} className="space-y-8">
         <FormField
           control={form.control}
           name="theme"
           render={({ field }) => (
             <FormItem className="space-y-1">
-              <FormLabel>Theme</FormLabel>
-              <FormDescription>
-                Select the theme for the dashboard.
-              </FormDescription>
+              <FormLabel>Apariencia</FormLabel>
+              <FormDescription>Selecciona la apariencia.</FormDescription>
               <FormMessage />
-              <RadioGroup
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                className="grid max-w-md grid-cols-2 gap-8 pt-2"
-              >
+              <RadioGroup onValueChange={handleRadioGroup} defaultValue={typeMode} className="grid max-w-md grid-cols-2 gap-8 pt-2">
                 <FormItem>
                   <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
                     <FormControl>
@@ -121,9 +102,7 @@ export function AppearanceForm() {
                         </div>
                       </div>
                     </div>
-                    <span className="block w-full p-2 text-center font-normal">
-                      Light
-                    </span>
+                    <span className="block w-full p-2 text-center font-normal">Light</span>
                   </FormLabel>
                 </FormItem>
                 <FormItem>
@@ -147,9 +126,7 @@ export function AppearanceForm() {
                         </div>
                       </div>
                     </div>
-                    <span className="block w-full p-2 text-center font-normal">
-                      Dark
-                    </span>
+                    <span className="block w-full p-2 text-center font-normal">Dark</span>
                   </FormLabel>
                 </FormItem>
               </RadioGroup>
@@ -157,8 +134,8 @@ export function AppearanceForm() {
           )}
         />
 
-        <Button type="submit">Update preferences</Button>
+        <Button type="submit">Actualizar apariencia</Button>
       </form>
     </Form>
-  )
+  );
 }
